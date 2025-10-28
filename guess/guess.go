@@ -7,6 +7,7 @@ import (
 )
 
 func main(){
+	/*
 	low := 1
 	high := 100
 	scanner := bufio.NewScanner(os.Stdin)
@@ -43,6 +44,43 @@ func main(){
 			break
 		} else {
 			fmt.Println("Invalid input")
+		}
+	}
+	*/
+
+	low := 1
+	high := 100
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("guess a number between 1 and 100")
+	fmt.Println("enter to continue")
+	scanner.Scan()
+	tries := 0
+
+	for {
+		guess := (low + high)/2
+		if low > high {
+			fmt.Println("user is lying")
+		}
+		fmt.Println("the guess is",guess)
+		fmt.Println("choices you have")
+		fmt.Println("a : to high")
+		fmt.Println("b : to low")
+		fmt.Println("c : correct")
+		scanner.Scan()
+		result := scanner.Text()
+
+		if result == "a" {
+			high = guess - 1
+			tries++
+		} else if result == "b" {
+			low = guess + 1
+			tries++
+		} else if result == "c" {
+			fmt.Println("correct")
+			fmt.Println("tries:",tries)
+			break
+		} else {
+			fmt.Println("invalid input")
 		}
 	}
 }
